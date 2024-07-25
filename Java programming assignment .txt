@@ -1,0 +1,284 @@
+﻿1.Explain the difference between primitive and reference types of  data.
+
+
+Primitive types store the actual value directly making them memory efficient and faster to access.
+Reference types store memory addresses, enabling them reference complex objects.
+
+
+
+
+2. Define scoope of a variable.
+
+
+Local variable is declared inside a function and can be used only by statements inside the function.
+Global variable is declared outside the functions or on top of a program.
+
+
+3. Why is initialization of variables required.
+ 
+The code is made more efficient since no temporary objects are created for the initialization.
+
+
+4. Difference between static,instance and local variable.
+
+
+Static variable is shared data across all the instance of a class.
+Instance variable is for attributes specified to each object of a class.
+Local variable is for temporary storage within methods.
+
+
+5. Difference between widening and narrowing cast in java.
+
+
+Widening cast safely converts smaller types to larger types.
+Narrowing cast requires explicit conversion from larger to smaller types.
+
+
+
+
+6. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7. Define class as used in OOP.
+
+
+Is a program - code - template   for creating objects, providing initial values for states and implementing behaviours.
+
+
+8. Explain the importance of classes in java programming.
+
+
+It provides template for creating objects which can bind codes into data.
+
+
+
+
+
+
+EXERCISE TWO.
+1.Write a Java program that asks the user to enter their surname and current age then print the number of characters of their surname and even or odd depending on their age 
+
+
+public class surnameage {
+    public static void main(String[] args) {
+        // Create a Scanner object for getting user input
+        Scanner scanner = new Scanner(System.in);
+
+
+        // Ask the user to enter their surname
+        System.out.print("Enter your surname: ");
+        String surname = scanner.nextLine();
+
+
+        // Ask the user to enter their current age
+        System.out.print("Enter your current age: ");
+        int age = scanner.nextInt();
+
+
+        // Get the number of characters in the surname
+        int surnameLength = surname.length();
+
+
+        // Determine if the age is even or odd
+        String ageType = (age % 2 == 0) ? "even" : "odd";
+
+
+        // Print the results
+        System.out.println("The number of characters in your surname is: " + surnameLength);
+        System.out.println("Your age is " + ageType + ".");
+
+
+        // Close the scanner
+        scanner.close();
+    }
+}
+
+
+
+
+2. Write a java program to ask students to enter the marks of the five units they did last semester,compute the average and display it on the screen ( Average should be given in two decimal places.)
+
+
+
+
+public class studentmarks {
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double totalMarks = 0.0;
+
+
+        // Loop to get marks for five units
+        for (int i = 1; i <= 5; i++) {
+            System.out.print("Enter marks for Unit " + i + ": ");
+            double marks = scanner.nextDouble();
+            totalMarks += marks;
+        }
+
+
+        // Calculate and format average with two decimal places
+        double average = Math.round(totalMarks / 5 * 100) / 100.0;
+
+
+        System.out.println("The average marks for the five units is: " + average);
+
+
+        scanner.close();
+    }
+}
+
+
+
+
+
+
+3.Write a program that help kids learn divisibility test of numbers of integers.The program should check whether the given integer is divisible by integers in the range of 0- 9 .
+
+
+
+
+
+
+
+
+
+
+public class divisibility {
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Enter an integer (0-9): ");
+        int number = scanner.nextInt();
+
+
+        // Validate input (0-9)
+        if (number < 0 || number > 9) {
+            System.out.println("Invalid input. Please enter a number between 0 and 9.");
+            return;
+        }
+
+
+        // Check divisibility for each digit (0-9)
+        for (int divisor = 0; divisor <= 9; divisor++) {
+            if (number % divisor == 0) {
+                System.out.println(number + " is divisible by " + divisor);
+            }
+        }
+
+
+        scanner.close();
+    }
+}
+   
+
+
+4.Write a program to display all the multiples of 2,3 and 7 within the range 71 to 150
+
+
+
+
+
+
+public class multiplesinrange {
+
+
+    public static void main(String[] args) {
+        int start = 71;
+        int end = 150;
+
+
+        // Loop through numbers in the range
+        for (int num = start; num <= end; num++) {
+            // Check if the number is divisible by 2, 3, and 7
+            if (num % 2 == 0 && num % 3 == 0 && num % 7 == 0) {
+                System.out.println(num);
+            }
+        }
+    }
+}
+
+
+ 
+
+
+5.Write a calculator using java to help user perform the basic operations (+,-,*,/) .
+1. User should be asked to enter a number then an operation, the program computes the operation and display the output to the computer screen.
+ 
+
+
+import java.util.Scanner;
+
+
+public class basiccalculator {
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        double num1, num2;
+        char operator;
+
+
+        System.out.print("Enter the first number: ");
+        num1 = scanner.nextDouble();
+
+
+        System.out.print("Choose an operator (+, -, *, /): ");
+        operator = scanner.next().charAt(0);
+
+
+        System.out.print("Enter the second number: ");
+        num2 = scanner.nextDouble();
+
+
+        double result;
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 == 0) {
+                    System.out.println("Error: Division by zero.");
+                    return; // Exit program on division by zero
+                }
+                result = num1 / num2;
+                break;
+            default:
+                System.out.println("Invalid operator.");
+                return; // Exit program on invalid operator
+        }
+
+
+        System.out.println(num1 + " " + operator + " " + num2 + " = " + result);
+
+
+        scanner.close();
+    }
+}
